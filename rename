@@ -1,0 +1,2 @@
+#!/bin/bash
+[ -e somefile ] && mv somefile renamesomefile || echo the file is not exist
