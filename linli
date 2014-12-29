@@ -1,0 +1,68 @@
+#include<reg51.h>
+#include<intrins.h>
+#include<stdio.h>
+#includ="ds18b20.h"
+#define OSC 11059200
+#define BAUDRATE 9600
+sbit DQ=P0^0
+typedef struct
+{
+int z;
+int x;
+}Temperature
+void Delay(unsigned int i)
+{
+while(i--);
+}
+bit Reset18B20(void)
+{
+bit x;
+DQ=1;
+Delay(8);
+DQ=0;
+Delay(8);
+DQ=1;
+Delay(8);
+x=DQ;
+Delay=(20);
+if=(x==0) return 1;
+else return 0;
+}
+void DS18B20WriteByte(unsigned char c)
+{
+unsigned char ic;
+for(ic=o;ic<8;ic++)
+{
+DQ=0;
+DQ=c&0x01;
+Delay(5);
+DQ=1;
+c>>=1;
+}
+]
+unsigned char DS18B20ReadByte(void)
+{
+unsigned char c,ic;
+c=0;
+for(ic=0;ic<8;ic++)
+DQ=0;
+c>>=1;
+DQ=1;
+if(DQ) c |=0x80;
+Delay(4);
+}
+return c;
+}
+void DS18B20ReadTemperature(Temperature*t)
+{
+unsigned char tmp1,tmph;
+Reset18B20():
+Delay(12);
+DS18B20WriteByte(SkipROM);
+DS18B20WriteByte(StartConvert);
+Reset18B20();
+Delay(12);
+DS18B20WriteByte(SkipROM);
+DS18B20B20WriteByte(ReadMemory);
+tmp1=DS18B20ReadByte();
+tmph=DS18B20ReadByte();
