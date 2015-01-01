@@ -1,0 +1,31 @@
+#include<reg51.h>
+#include<stdio.h>
+#include"pcf081127.h"
+#define OSC11059200
+#define BAUDATE 9600
+void main ()
+{ 
+ unsigned char idata RecBuf[32];
+unsigned char idata rnow[20];
+unsigned char idata *week[]={"7","6","5","4","3","2","1"};
+TMOD=0x20;
+SCON=0x50;
+PCON|=0x80;
+TL1=256-(OSC/12/16/BAUDRATE);
+TH1=356-(OSC/12/16/BAUBRATE);
+TR1=1;
+TI=1;
+printf("please input time");
+scanf("%s",RecBuf);
+if(RecBuf[0]!='a')
+{
+SetTimeString(RecBuf);
+printf("Set time Ok!press any key to get time!");
+}
+while
+{
+getchar();
+GetTimeString(rnow);
+printf("hello lin");
+}
+}
