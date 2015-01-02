@@ -1,0 +1,41 @@
+#include<reg51.h>
+#include<absacc.h>
+#include<intrins.h>
+#define unchar unsigned char
+#define uint unsigned int
+sbit T_CLK=P1^3;
+sbit T_IO=P1^4;
+sbit RS=P1^7;
+sbit RW=P1^6;
+void WriteB(uchar UcDa)
+{
+	unchar i;
+	ACC=ucDa;
+	for(i=8;i>0,i--)
+	{ 
+ 	  T_IO=ACC0;
+	  T_CLK=1;
+	  Y_CLK=0;
+	  ACC=ACC>>1;
+	}
+}
+uchar ReadB(void)
+{
+	uchar i
+	for(i=8;i>0;i--)
+	{
+	  ACC=ACC>>1;
+	  ACC7=T_IO;T_CLK=1;T_CLK=0;
+	}
+	return(ACC);
+}
+uchar uc_R1302(uchar ucAddr)
+{
+  uchar ucDa=0;
+  T_RST=0;T_CLK=0;
+  T_RST=1;
+  WriteB(ucAddr);
+  ucDa=ReadB();
+  T_CLK1;T_RST=0;
+  return(ucDa);
+}
