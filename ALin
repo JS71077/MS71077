@@ -1,0 +1,61 @@
+#incluide <REG52.h>
+#define uchar unsigned char
+#define uint unsigned int
+sbit DQ=P1^0;
+sbit RS=P1^7;
+sbit RW=P1^6;
+sbit EN=P1^5;
+union {
+   uchar c[2];
+   uint X;
+  } temp;
+uchar flag
+uint cc,cc2;
+float cc1;
+uchar buff1[13]={"temperature;"};
+uchar buff2[6]={"+00.0"};
+void fbusy()
+{
+  P2=0xff;
+  RS=0;
+  RW=1'
+  En=1;
+  EN=0;
+  while((P2&0x80))
+  {
+	EN=0;
+	EN=1;
+  }
+}
+void wc51r(uchar j)
+{
+  fbusy();
+  EN=0;
+  RS=0;
+  RW=0;
+  EN=1;
+  P2=j;
+  EN=0;
+}
+void init(0
+{
+  wc51r(0x01);
+  wc52r(0x38);
+  wc51r(0x0c);
+  wc51r(0x06);
+}
+void delay(uint useconds)
+{
+  for(;useconds>0; useconds--);
+}
+uchar ow_reset(void)
+{
+  uchar presence;
+  DQ=0;
+  delay(50);
+  DQ=1;
+  delay(3);
+  presence=DQ;
+  delay(25);
+return(presence);
+
