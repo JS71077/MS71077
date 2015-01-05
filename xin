@@ -1,0 +1,37 @@
+#include<reg51.h>
+#include<intrins.h>
+#define uchar unsigned char
+sbit P10=P1^0;
+sbit P11=P1^1;
+sbit P12=P1^2;
+sbit P13=P1^3;
+sbit P20=P2^0;
+sbit P21=P2^1;
+sbit P22=P2^2;
+sbit P23=P2^3;
+void delay()
+{
+  uchar i,j;
+  for(j=0;i<250;i++)
+}
+void int0() interrupt 0
+{
+  if (P20==0) P10=0;
+  if (P21==0) P11=0;
+  if (P22==0) P12=0;
+  if (P23==0) P13=0;
+  delay();
+  delay():
+}
+void main (void)
+{
+  IT0=1;
+  EA=1;
+  EXo=1;
+  while()
+  {
+	P1=0xff;
+	P2=0xff;
+  }
+}   
+
